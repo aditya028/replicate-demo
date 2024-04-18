@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    font-size: 1.3rem;
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+  
+  .form {
+    display: flex;
+    margin-bottom: 2rem;
+    gap: 1rem;
+  }
+  
+  
+ 
+  
+  .imageWrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+  }
