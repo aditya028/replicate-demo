@@ -38,7 +38,7 @@ export default function Home() {
         setError(prediction.detail);
         return;
       }
-      console.log({prediction})
+      console.log({ prediction });
       setPrediction(prediction);
     }
   };
@@ -49,31 +49,41 @@ export default function Home() {
         <title>Replicate + Next.js</title>
       </Head>
 
-      <p>
-        Dream something with{" "}
-        <a href="https://replicate.com/stability-ai/stable-diffusion">SDXL</a>:
-      </p>
+      <p className="">Dream something and create with AI.</p>
 
       <form className={styles.form} onSubmit={handleSubmit}>
-        <input type="text" name="prompt" placeholder="Enter a prompt to display an image" className="input input-bordered input-secondary w-full "/>
-        <button type="submit" className="btn btn-outline btn-primary">Go!</button>
+        <input
+          type="text"
+          name="prompt"
+          placeholder="Enter a prompt to display an image"
+          className="input input-bordered input-secondary w-full "
+        />
+        <button type="submit" className="btn btn-outline btn-primary">
+          Go!
+        </button>
       </form>
 
       {error && <div>{error}</div>}
 
       {prediction && (
         <div>
-            {prediction.output && (
-              <div className={styles.imageWrapper}>
+          {prediction.output && (
+            <div className={styles.imageWrapper}>
               <Image
                 fill
                 src={prediction.output[prediction.output.length - 1]}
                 alt="output"
-                sizes='100vw'
+                sizes="100vw"
               />
-              </div>
+            </div>
+          )}
+
+          <div className={`badge gap-2 mt-4 p-4 ${prediction.status === 'succeeded' ? 'badge-success' : 'badge-info'}`}>
+            {prediction.status}
+            {prediction.status === "processing" && (
+              <span className="loading loading-dots loading-lg"></span>
             )}
-            <p>status: {prediction.status}</p>
+          </div>
         </div>
       )}
     </div>
